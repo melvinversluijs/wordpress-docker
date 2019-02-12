@@ -23,10 +23,10 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 634dcae84ec0        wordpress_php       "docker-php-entrypoi…"   10 seconds ago      Up 9 seconds        9000/tcp                            wordpress_php_1
 9c5cf2b75a8a        mysql:8.0           "docker-entrypoint.s…"   10 seconds ago      Up 9 seconds        0.0.0.0:3306->3306/tcp, 33060/tcp   wordpress_db_1
 ```
-5. You can use bash commands within a container by using `docker exec -ti <CONTAINER_NAME> bash` (CONTAINER\_ID instead of CONTAINER\_NAME will also work)
-6. You can stop the containers by using `docker-compose stop`. Or stop a specific container by using `docker stop <CONTAINER_NAME>`
-7. To access the Wordpress site in your browser use  **wordpress-dev.local** as url. Note on MacOS the .local extension should be bypassed in the proxy settings. (Settings -> Network -> Advanced -> Proxies -> add `*.local` in the text area).
-8. During the Wordpress installation step, use the following credentials for your Database:
+7. You can use bash commands within a container by using `docker exec -ti <CONTAINER_NAME> bash` (CONTAINER\_ID instead of CONTAINER\_NAME will also work)
+8. You can stop the containers by using `docker-compose stop`. Or stop a specific container by using `docker stop <CONTAINER_NAME>`
+9. To access the Wordpress site in your browser use  **wordpress-dev.local** as url. Note on MacOS the .local extension should be bypassed in the proxy settings. (Settings -> Network -> Advanced -> Proxies -> add `*.local` in the text area).
+10. During the Wordpress installation step, use the following credentials for your Database:
    1. Database Name: wordpress
    2. Username: wordpress
    3. Password: wordpress
