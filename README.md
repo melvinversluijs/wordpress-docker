@@ -31,3 +31,25 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
    2. Username: wordpress
    3. Password: wordpress
    4. Database Host: db:3306
+
+## Using xDebug
+The xdebug php extension has been added to the php container for debugging purposes. To use the debugger you should listen to port **9001**. You should map your local wordpress folder to the /code folder on the container.
+
+In VSCode the launch.json configuration will look as follows:
+
+```
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Listen for XDebug",
+      "type": "php",
+      "request": "launch",
+      "port": 9001,
+      "pathMappings": {
+        "/code": "${workspaceRoot}/wordpress"
+      }
+    }
+  ]
+}
+```

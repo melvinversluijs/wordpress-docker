@@ -6,6 +6,7 @@ services:
       - ./wordpress:/code
     expose:
       - '9000'
+      - '9001'
   nginx:
     image: nginx:latest
     ports:
