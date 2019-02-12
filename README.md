@@ -27,10 +27,10 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 8. You can stop the containers by using `docker-compose stop`. Or stop a specific container by using `docker stop <CONTAINER_NAME>`
 9. To access the Wordpress site in your browser use  **wordpress-dev.local** as url. Note on MacOS the .local extension should be bypassed in the proxy settings. (Settings -> Network -> Advanced -> Proxies -> add `*.local` in the text area).
 10. During the Wordpress installation step, use the following credentials for your Database:
-   1. Database Name: wordpress
-   2. Username: wordpress
-   3. Password: wordpress
-   4. Database Host: db:3306
+    1. Database Name: wordpress
+    2. Username: wordpress  
+    3. Password: wordpress
+    4. Database Host: db:3306
 
 ## Using xDebug
 The xdebug php extension has been added to the php container for debugging purposes. To use the debugger you should listen to port **9001**. You should map your local wordpress folder to the /code folder on the container.
