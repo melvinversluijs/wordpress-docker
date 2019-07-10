@@ -1,6 +1,6 @@
 ## First our own ignores:
-Docker/db_data/*
-Docker/nginx/logs
+docker/db_data/*
+docker/nginx/logs
 
 wordpress
 
