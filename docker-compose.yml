@@ -11,7 +11,7 @@ services:
     depends_on:
       - db
     volumes:
-      - ./wordpress:/code
+      - ./wordpress:/code:z
   nginx:
     build:
       context: .
@@ -24,14 +24,14 @@ services:
       - db
       - php
     volumes:
-      - ./wordpress:/code
+      - ./wordpress:/code:z
   db:
     image: mysql:8.0
     container_name: wordpress-db
     ports:
       - "3306:3306"
     volumes:
-      - ./Docker/db_data:/var/lib/mysql
+      - ./docker/db/data:/var/lib/mysql:z
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: "secret"
