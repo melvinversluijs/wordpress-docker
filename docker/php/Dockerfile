@@ -1,4 +1,4 @@
-FROM php:7.3-fpm
+FROM php:7.3-fpm-stretch
 LABEL author "Melvin Versluijs <https://github.com/melvinversluijs/>"
 RUN apt-get -y update
 RUN apt-get -y install libpng-dev  libjpeg-dev libfreetype6-dev
