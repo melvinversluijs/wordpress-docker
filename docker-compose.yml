@@ -5,18 +5,21 @@ services:
       context: .
       dockerfile: ./docker/php/Dockerfile
     container_name: wordpress-php
+    restart: always
     expose:
       - 9000
       - 9001
     depends_on:
       - db
     volumes:
-      - ./wordpress:/code:z
+      - ./wordpress:/code:cached,z
+      - ./wordpress/wp-content/themes/<YOUR_THEME_FOLDER>:/code/wp-content/themes/twentynineteen:delegated,z
   nginx:
     build:
       context: .
       dockerfile: ./docker/nginx/Dockerfile
     container_name: wordpress-nginx
+    restart: always
     ports:
       - "80:80"
       - "443:443"
@@ -24,14 +27,16 @@ services:
       - db
       - php
     volumes:
-      - ./wordpress:/code:z
+      - ./wordpress:/code:cached,z
+      - ./wordpress/wp-content/themes/<YOUR_THEME_FOLDER>:/code/wp-content/themes/twentynineteen:delegated,z
   db:
     image: mysql:8.0
     container_name: wordpress-db
+    restart: always
     ports:
       - "3306:3306"
     volumes:
-      - ./docker/db/data:/var/lib/mysql:z
+      - ./docker/db/data:/var/lib/mysql:cached,z
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: "secret"

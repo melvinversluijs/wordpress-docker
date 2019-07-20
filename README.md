@@ -14,12 +14,13 @@ Make sure you got both Docker: `docker -v` and docker-compose: `docker-compose -
 1. Navigate to the root of this project.
 2. Add your Wordpress installation and name the folder containing your Wordpress files as `wordpress`. (If you want to call it anything else please also change this on line 6 and 14 of the docker-compose.yml file).
 3. Add the following line to your hosts file: `127.0.0.1 wordpress-dev.local`
-4. Build the project with `docker-compose build`
+4. Replace the `<YOUR_THEME_FOLDER>` in the php and nginx volumes with your theme folder name. Caching everything except the theme folder will boost your performance on macOS.
+5. Build the project with `docker-compose build`
    - Make sure you Use Linux containers (Windows only)
    - Execute commands in CMD as administrator (Windows only)
-5. For performance reasons you should replace the nginx and php volume with the directory you are actively editing i.e. your theme folder during development. (Instead of the entire Wordpress directory).
-6. Start the services by using `docker-compose up` you can add the -d option to run the services in the background.
-7. Use `docker ps` to check the status of the current active containers.
+6. For performance reasons you should replace the nginx and php volume with the directory you are actively editing i.e. your theme folder during development. (Instead of the entire Wordpress directory).
+7. Start the services by using `docker-compose up` you can add the -d option to run the services in the background.
+8. Use `docker ps` to check the status of the current active containers.
 
 ```text
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES
@@ -28,10 +29,10 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 9c5cf2b75a8a        mysql:8.0           "docker-entrypoint.s…"   10 seconds ago      Up 9 seconds        0.0.0.0:3306->3306/tcp, 33060/tcp   wordpress_db_1
 ```
 
-8. You can use bash commands within a container by using `docker exec -ti <CONTAINER_NAME> bash` (CONTAINER_ID instead of CONTAINER_NAME will also work)
-9. You can stop the containers by using `docker-compose stop`. Or stop a specific container by using `docker stop <CONTAINER_NAME>`
-10. To access the Wordpress site in your browser use **wordpress-dev.local** as url. Note on MacOS the .local extension should be bypassed in the proxy settings. (Settings -> Network -> Advanced -> Proxies -> add `*.local` in the text area).
-11. During the Wordpress installation step, use the following credentials for your Database:
+9. You can use bash commands within a container by using `docker exec -ti <CONTAINER_NAME> bash` (CONTAINER_ID instead of CONTAINER_NAME will also work)
+10. You can stop the containers by using `docker-compose stop`. Or stop a specific container by using `docker stop <CONTAINER_NAME>`
+11. To access the Wordpress site in your browser use **wordpress-dev.local** as url. Note on MacOS the .local extension should be bypassed in the proxy settings. (Settings -> Network -> Advanced -> Proxies -> add `*.local` in the text area).
+12. During the Wordpress installation step, use the following credentials for your Database:
     1. Database Name: wordpress
     2. Username: wordpress
     3. Password: wordpress
