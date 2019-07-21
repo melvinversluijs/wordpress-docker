@@ -1,7 +1,10 @@
 ## First our own ignores:
 docker/db_data/*
 docker/db/data/*
+!docker/db/data/.gitkeep
 docker/nginx/logs
+docker/certificates/*.crt
+docker/certificates/*.key
 
 wordpress
 

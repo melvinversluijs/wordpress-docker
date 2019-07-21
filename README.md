@@ -60,3 +60,36 @@ In VSCode the launch.json configuration will look as follows:
   ]
 }
 ```
+
+## Using SSL
+
+To be able to use SSL in this docker configuration you will need to generate some self signed certificates.
+
+You can create a certificate using:
+
+```bash
+  ## First cd into the certificates folder.
+  cd ./docker/certificates
+
+  ## Then generate the certificate here.
+  openssl req \
+    -newkey rsa:2048 \
+    -x509 \
+    -nodes \
+    -keyout wordpress-dev.local.key \
+    -new \
+    -out wordpress-dev.local.crt \
+    -subj /CN=\wordpress-dev.local \
+    -reqexts SAN \
+    -extensions SAN \
+    -config <(cat /System/Library/OpenSSL/openssl.cnf \
+        <(printf '[SAN]\nsubjectAltName=DNS:\wordpress-dev.local')) \
+    -sha256 \
+    -days 3650
+```
+
+I've also included a nginx configuration file to enable SSL, you can rename the `./docker/nginx/site-ssl.conf` file to `./docker/nginx/site.conf` and remove the existing `site.conf` file or simply change line 7 of the `./docker/nginx/Dockerfile` to `COPY ./docker/nginx/site-ssl.conf /etc/nginx/conf.d/site.conf`.
+
+Lastly you will need to trust the self signed certificate on your system.
+
+On MacOS you can easily accomplish this with the Keychain Access app. Simply drag the generated certificate to the keychain app to add it (You will be prompted for your password). The double click it to trust it for SSL (Trust -> Secure Sockets Layer (SSL) -> Always trust).
