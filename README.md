@@ -65,7 +65,7 @@ In VSCode the launch.json configuration will look as follows:
 
 To be able to use SSL in this docker configuration you will need to generate some self signed certificates.
 
-You can create a certificate using:
+You can create a certificate on MacOS using:
 
 ```bash
   ## First cd into the certificates folder.

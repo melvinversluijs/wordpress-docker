@@ -5,6 +5,7 @@ docker/db/data/*
 docker/nginx/logs
 docker/certificates/*.crt
 docker/certificates/*.key
+docker/certificates/*.pem
 
 wordpress
 
